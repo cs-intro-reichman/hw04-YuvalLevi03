@@ -22,21 +22,78 @@ public class StringOps {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
-        
     }
 
     public static String capVowelsLowRest (String string) {
-        // Write your code here:
-        return "";
+        char[] vowelsLower = {'a','i','o','e','u'};
+        String ans = "";
+        for (int i = 0 ; i < string.length() ; i++ ) {
+            char charI = lowerCase(string.charAt(i));
+            for (int g = 0 ; g < vowelsLower.length ; g++ ) {
+                if (charI == vowelsLower[g]) {
+                    charI = upperCase(string.charAt(i));
+                    break;
+                }
+            }
+            ans += charI;
+        }
+        return ans;
     }
 
     public static String camelCase (String string) {
-        // Write your code here:
-        return "";
-    }
+        String ans = "";
+        if (string.charAt(0) != ' ') {
+            ans += lowerCase(string.charAt(0));
+        }
+        for (int i = 1 ; i < string.length() ; i++) {
+            if (string.charAt(i) == ' ') {
+                ans = ans;
+            } else {
+                if (string.charAt(i - 1) == ' ' && ans != "") {
+                    ans += upperCase(string.charAt(i)); 
+                } else {
+                    ans += lowerCase(string.charAt(i));
+                }
+            }
+        }
+        return ans;
+    }   
 
     public static int[] allIndexOf (String string, char chr) {
-        // Write your code here:
-        return new int[1];
+        int[] array = new int[indexCount(string, chr)];
+        int insertIndex = 0;
+        for (int i = 0 ; i < string.length() ; i++) {
+            if (string.charAt(i) == chr) {
+                array[insertIndex] = i;
+                insertIndex++;
+            }
+        }
+        return array;
     }
+
+    public static char lowerCase (char char1) {
+        if (char1 >= 'A' && char1 <= 'Z') {
+            return (char) (char1 + 32);
+        } else {
+            return char1;
+        }
+    }
+
+    public static char upperCase (char char1) {
+        if (char1 >= 'a' && char1 <= 'z') {
+            return (char) (char1 - 32);
+        } else {
+            return char1;
+        }
+    }
+
+    public static int indexCount (String string, char chr) {
+        int count = 0;
+        for (int i = 0 ; i < string.length() ; i++) {
+            if (string.charAt(i) == chr) {
+                count++;
+            }
+        }
+        return count;
+    } 
 }
