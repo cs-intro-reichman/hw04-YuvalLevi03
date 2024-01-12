@@ -22,8 +22,8 @@ public class StringOps {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
-        String str = "Hello WOrld lo LOL HEEYYY 123";
-        System.out.println(indexCount(str,'L'));
+        String str = "  Two     wordS";
+        System.out.println(camelCase(str));
 
     }
 
@@ -44,12 +44,15 @@ public class StringOps {
     }
 
     public static String camelCase (String string) {
-        String ans = "" + lowerCase(string.charAt(0));
+        String ans = "";
+        if (string.charAt(0) != ' ') {
+            ans += lowerCase(string.charAt(0));
+        }
         for (int i = 1 ; i < string.length() ; i++) {
             if (string.charAt(i) == ' ') {
                 ans = ans;
             } else {
-                if (string.charAt(i - 1) == ' ') {
+                if (string.charAt(i - 1) == ' ' && ans != "") {
                     ans += upperCase(string.charAt(i)); 
                 } else {
                     ans += lowerCase(string.charAt(i));
