@@ -1,9 +1,5 @@
 public class ArrayOps {
     public static void main(String[] args) {
-     int[] arr1= {32,-4,-50};
-     // int[] arr2= {1,3,2,1,1,1,1,11};
-     System.out.println(isSorted(arr1));
-
     }
     
     public static int findMissingInt (int [] array) {
